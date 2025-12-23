@@ -40,13 +40,15 @@ CivicEye is a smart city solution that uses Artificial Intelligence to identify 
 **Install Dependencies**:
 
 '''Bash
-pip install flask flask-cors'''
+pip install flask flask-cors
+'''
 
 
 **Run the Engine**:
 
 '''Bash
-python server.py'''
+python server.py
+'''
 
 
 **Access the Portal**:
