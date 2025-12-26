@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEye | Citizen Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #successModal { z-index: 9999; }
+        .animate-pop { animation: pop 0.3s ease-out; }
+        @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6 font-sans">
+
+    <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md border border-slate-200">
+        <h1 class="text-4xl font-black text-indigo-700 mb-2 text-center italic tracking-tighter">CivicEye</h1>
+        <p class="text-gray-400 text-center mb-8 text-[10px] uppercase tracking-widest font-bold">AI Road Inspection</p>
+        
+        <div class="space-y-6">
+            <div class="space-y-1">
+                <label class="text-[10px] font-black text-gray-400 ml-1 uppercase">Step 1: Upload Photo</label>
+                <input type="file" id="imgInput" class="w-full border-2 border-dashed p-3 rounded-xl bg-slate-50 text-sm cursor-pointer">
+            </div>
+            <div class="space-y-1">
+                <label class="text-[10px] font-black text-gray-400 ml-1 uppercase">Step 2: Location</label>
+                <input type="text" id="addrInput" placeholder="Enter area name..." class="w-full border-2 p-4 rounded-xl focus:border-indigo-500 outline-none text-sm">
+            </div>
+            
+            <button type="button" onclick="submitReport()" id="mainBtn" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-lg shadow-xl hover:bg-black transition-all active:scale-95">
+                SUBMIT REPORT
+            </button>
+        </div>
+    </div>
+
+    <div id="successModal" class="fixed inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-[40px] p-8 max-w-sm w-full text-center shadow-2xl animate-pop">
+            <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-lg">✓</div>
+            <h2 class="text-2xl font-black text-slate-800">THANK YOU!</h2>
+            <p class="text-slate-400 text-xs mb-6 px-4">AI has verified your report. 10 Points have been added to your profile.</p>
+            
+            <div class="bg-indigo-50 rounded-[24px] p-6 mb-8 border border-indigo-100">
+                <p id="ticketDisplay" class="text-indigo-400 font-mono text-[10px] mb-2 font-bold tracking-widest uppercase"></p>
+                <p class="text-green-600 font-black text-4xl tracking-tighter">+10 POINTS</p>
+                <p class="text-indigo-900 text-[10px] font-bold uppercase mt-2 tracking-widest italic font-black">Status: AI Verified ✅</p>
+            </div>
+
+            <button onclick="closeModal()" class="w-full bg-indigo-600 text-white py-5 rounded-3xl font-black text-lg hover:bg-indigo-700 shadow-lg">
+                OK, GOT IT!
+            </button>
+        </div>
+    </div>
+<script>
+    // Page load hote hi check karo ki kya koi popup dikhana baki hai
+    window.onload = () => {
+        const savedTicket = localStorage.getItem('pendingTicket');
+        if (savedTicket) {
+            showModal(savedTicket);
+            localStorage.removeItem('pendingTicket'); // Dikhane ke baad saaf kar do
+        }
+    };
+
+    async function submitReport() {
+        const btn = document.getElementById('mainBtn');
+        const img = document.getElementById('imgInput').files[0];
+        const addr = document.getElementById('addrInput').value;
+
+        if(!img || !addr) { alert("Details bharo bhai!"); return; }
+
+        btn.innerText = "⏳ ANALYZING...";
+        btn.disabled = true;
+
+        const fd = new FormData();
+        fd.append('image', img);
+        fd.append('address', addr);
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/submit', {
+                method: 'POST',
+                body: fd
+            });
+            const data = await response.json();
+            
+            if (data.status === "Success") {
+                // Refresh se bachne ke liye ticket ko browser memory mein save kar lo
+                localStorage.setItem('pendingTicket', data.ticket);
+                showModal(data.ticket);
+            } else {
+                alert("AI Rejected!");
+            }
+        } catch (error) {
+            alert("Server Offline!");
+        } finally {
+            btn.innerText = "SUBMIT REPORT";
+            btn.disabled = false;
+        }
+    }
+
+    function showModal(ticket) {
+        document.getElementById('ticketDisplay').innerText = "REF: " + ticket;
+        document.getElementById('successModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('successModal').classList.add('hidden');
+        document.getElementById('imgInput').value = "";
+        document.getElementById('addrInput').value = "";
+        localStorage.removeItem('pendingTicket');
+    }
+</script>
+</body>
+</html>
