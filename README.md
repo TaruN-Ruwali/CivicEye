@@ -20,7 +20,7 @@ CivicEye is a smart city solution that uses Artificial Intelligence to identify 
 
 **Backend**: Python , flask
 
-**Database**: JSON-based persistent storage
+**Database**: SQLite
 
 **Logic**: Custom AI Engine (Simulation Phase)
 
