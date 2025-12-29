@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – Complaint Status</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="container status-container">
+    <div class="left status-left">
+      <h1 class="title">Your Complaints</h1>
+
+      <div id="complaint-list" class="complaint-list">
+        <!-- Complaints will be injected by JS -->
+      </div>
+
+      <button class="btn-login" onclick="refreshComplaints()">
+        Refresh
+      </button>
+
+      <a href="./submit.html" class="create-link">
+        Submit New Complaint
+      </a>
+      <br />
+      <a href="./index.html" class="create-link">
+        Back to Login
+      </a>
+    </div>
+
+    <div class="right status-right">
+      
+      <img id="preview-img" src="./assets/login-art.png" alt="preview" />
+    </div>
+  </div>
+
+<script src="./js/status.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – Submit Complaint</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- LEFT: FORM -->
+    <div class="left">
+      <h1 class="title">Submit a Complaint</h1>
+
+      <form class="form" onsubmit="handleSubmit(event)" enctype="multipart/form-data">
+
+        <label>Upload Image</label>
+        <input type="file" id="image" accept="image/*" onchange="previewImage(event)" required />
+
+        <label>Description</label>
+        <textarea id="desc" placeholder="Describe the issue..." required></textarea>
+        
+        <label>Location</label>
+        <textarea id="location" placeholder="Mention Location" required></textarea>
+
+        <button type="submit" class="btn-login">Submit</button>
+      </form>
+
+      <a href="./index.html" class="create-link">
+        Back to Home
+      </a>
+    </div>
+
+    <!-- RIGHT: IMAGE PREVIEW -->
+    <div class="right" id="preview-container">
+      <img id="preview" src="./assets/login-art.png" alt="Preview" />
+    </div>
+  </div>
+
+<script src="./js/submit.js"></script>
+</body>
+</html>

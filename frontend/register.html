@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – Register</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- LEFT FORM -->
+    <div class="left">
+      <h1 class="title">Create Account</h1>
+
+      <form class="form" onsubmit="handleRegister(event)">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter full name" required />
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter email" required />
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Create password" required />
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirm" placeholder="Re-enter password" required />
+
+        <button type="submit" class="btn-login">Sign Up</button>
+      </form>
+
+      <a href="./index.html" class="create-link">
+        Already have an account? Login
+      </a>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="right">
+      <img src="./assets/iPad Chor logo.png" alt="CivicEye Illustration" />
+    </div>
+  </div>
+
+<script src="./js/register.js"></script>
+</body>
+</html>

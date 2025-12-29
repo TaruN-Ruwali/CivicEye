@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – Admin Panel</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="admin-container">
+
+    <nav class="dash-nav">
+      <h2 class="dash-logo">CivicEye – Admin</h2>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </nav>
+
+    <section class="admin-body">
+      <h1 class="dash-title">Complaints Management</h1>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody id="admin-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+<script src="./js/admin.js"></script>
+</body>
+</html>

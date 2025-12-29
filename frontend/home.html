@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="dashboard-container">
+
+    <nav class="dash-nav">
+      <h2 class="dash-logo">CivicEye</h2>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </nav>
+
+    <section class="dash-body">
+      <h1 class="dash-title">Welcome, User 👋</h1>
+      <p class="dash-subtitle">Choose what you want to do:</p>
+
+      <div class="dash-cards">
+        <a href="./submit.html" class="dash-card">
+          <img src="./assets/login-art.png" />
+          <h3>Submit New Complaint</h3>
+          <p>Report a civic issue by uploading image & description.</p>
+        </a>
+
+        <a href="./status.html" class="dash-card">
+          <img src="./assets/login-art.png" />
+          <h3>View Complaint Status</h3>
+          <p>Track all your submitted complaints in one place.</p>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+<script src="./js/home.js"></script>
+</body>
+</html>
