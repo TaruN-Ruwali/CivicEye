@@ -1,7 +1,7 @@
 // Dummy complaints until backend connects
 const complaints = [
   { id: 1, image: "./assets/iPad Chor logo.png", status: "Pending" },
-  { id: 2, image: "./assets/login-art.png", status: "In-Progress" },
+  { id: 2, image: "./assets/Potholes.png", status: "In-Progress" },
   { id: 3, image: "./assets/login-art.png", status: "Resolved" },
 ];
 
