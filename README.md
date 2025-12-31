@@ -99,7 +99,7 @@ python backend/server.py
 ### 3️⃣ Open HTML files
 ```bash
 frontend/index.html  → Citizen Login
----
+
 frontend/admin.html  → Admin Dashboard
 ```
 
