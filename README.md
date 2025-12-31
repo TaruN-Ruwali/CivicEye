@@ -53,6 +53,18 @@ CivicEye bridges this gap by digitally connecting **citizens ↔ municipalities*
 ```
 CivicEye/
 │
+|── Diagrams/
+│ ├── Admin-Complaint-Management-Flow.png
+│ ├── System-Architecture.png
+│ ├── User-Flow-Diagram.png
+|
+├── Screenshots/
+│ ├── Admin-Portal.png
+│ ├── Complain-Page.png
+│ ├── Login-Page.png
+│ ├── Register-Page.png
+│ └── Status-Pages.png
+|
 ├── backend/
 │ ├── ai_engine.py
 │ ├── app.py
@@ -105,9 +117,9 @@ frontend/admin.html  → Admin Dashboard
 | Name         | Role                 |
 | ------------ | -------------------- |
 | Tarun Ruwali | Frontend Web Dev     |
-| Jay          | AI / ML              |
-| Ankush       | Backend & Database   |
-| Ujjwal       | Tester / UI Details  |
+| Jay Negi     | AI / ML              |
+| Ankush   Rawat    | Backend & Database   |
+| Ujjwal  Bhatt     | Tester / UI Details  |
 
 ---
 
