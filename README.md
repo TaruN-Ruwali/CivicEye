@@ -78,13 +78,6 @@ CivicEye/
 │ ├── ER Diagram.png
 │ ├── civic_eye.db
 │ └── schema.sql
-│
-├── docs/
-│ ├── SystemArchitecture.png
-│ ├── UserFlow.png
-│ ├── AdminFlow.png
-│ ├── DFD-Level0.png
-│ └── AI-Pipeline.png
 |
 ├── .gitignore
 ├── README.md
