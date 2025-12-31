@@ -122,4 +122,4 @@ frontend/admin.html  → Admin Dashboard
 ✔️ AI keeps false complaints out → higher efficiency
 
 ---
-##  Thank you for reviewing — full working demo + mobile app + real AI model will be presented in Stage-2 & Stage-3.
+##  Thank you for reviewing — full working demo + Web App + real AI model will be presented in Stage-2 .
