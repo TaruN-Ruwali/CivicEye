@@ -4,8 +4,14 @@ function handleLogin(event) {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  // TODO – integrate Flask API later
-  console.log("Login Attempt:", email, password);
+  // Temporary mock logic (backend will replace later)
+  if (email === "admin@civiceye.com" && password === "admin123") {
+    alert("Welcome Admin");
+    window.location.href = "./admin.html";
+    return;
+  }
 
-  alert("Login submitted ✔ (Backend integration pending)");
+  // normal user
+  alert("Login Successful ✔");
+  window.location.href = "./home.html";
 }
