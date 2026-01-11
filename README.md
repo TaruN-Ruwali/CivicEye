@@ -94,7 +94,7 @@ pip install flask flask-cors
 ```
 ### 2️ Run Server
 ```bash
-python backend/server.py
+ python -m flask --app backend.server run --debug
 ```
 ### 3️ Open HTML files
 ```bash
