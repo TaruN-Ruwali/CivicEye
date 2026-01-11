@@ -1,5 +1,7 @@
 #  CivicEye – Smart Civic Issue Reporting Platform
 
+![Civic Eye Logo](Screenshots/Civic_eye_logo.png)
+
 CivicEye is a web-based civic infrastructure reporting system that empowers citizens to submit road defects (potholes, garbage, leakage etc.) and enables authorities to track, verify, and resolve them efficiently.
 
 This prototype demonstrates:
