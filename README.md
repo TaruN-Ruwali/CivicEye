@@ -40,7 +40,7 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 | Dashboard showing all complaints | — | ✅ |
 | Change status (Pending → In-Progress → Resolved) | — | ✅ |
 | Persistent storage (SQLite) |  Automatic |  Automatic |
-| AI Validation (simulated score) |  Planned |  Planned |
+| AI Validation (Confidence score) |  ✅ |  ✅ |
 
 ---
 
