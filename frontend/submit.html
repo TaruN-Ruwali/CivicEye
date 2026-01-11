@@ -11,12 +11,25 @@
   <div class="container">
     <!-- LEFT: FORM -->
     <div class="left">
-      <h1 class="title">Submit a Complaint</h1>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1 class="title" style="margin: 0;">Submit a Complaint</h1>
+        <button onclick="logout()" style="padding: 8px 15px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Logout
+        </button>
+      </div>
 
       <form class="form" onsubmit="handleSubmit(event)" enctype="multipart/form-data">
 
         <label>Upload Image</label>
         <input type="file" id="image" accept="image/*" onchange="previewImage(event)" required />
+
+        <label>Complaint Type</label>
+        <select id="type" required>
+          <option value="garbage">Garbage</option>
+          <option value="pothole">Pothole</option>
+          <option value="water_leakage">Water Leakage</option>
+          <option value="other">Other</option>
+        </select>
 
         <label>Description</label>
         <textarea id="desc" placeholder="Describe the issue..." required></textarea>
@@ -27,9 +40,14 @@
         <button type="submit" class="btn-login">Submit</button>
       </form>
 
-      <a href="./home.html" class="create-link">
-        Back to Home
-      </a>
+      <div style="margin-top: 15px;">
+        <a href="./home.html" class="create-link" style="margin-right: 15px;">
+          Back to Home
+        </a>
+        <a href="./status.html" class="create-link">
+          View My Complaints
+        </a>
+      </div>
     </div>
 
     <!-- RIGHT: IMAGE PREVIEW -->
