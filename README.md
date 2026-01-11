@@ -44,10 +44,47 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 
 ---
 
-##  Architecture Overview
+---
+
+### System Architecture
+![System Architecture](Diagrams/System-Architecture.png)
+
+---
+
+### Admin Complaint Management Flow
+![Flow-Chart](Diagrams/Admin-Complaint-Management-Flow.png)
+
+---
+
+### User Flow Diagram
+![User-Flow-Diagram](Diagrams/User-Flow-Diagram.png)
+
+---
+
+### Screenshot
+##### Login Page
+![User-Flow-Diagram](Screenshots/Login-Page.png)
+
+##### Register Page
+
+![User-Flow-Diagram](Screenshots/Register-Page.png)
+
+##### Complain Page
+
+![User-Flow-Diagram](Screenshots/Complain-Page.png)
+
+##### Status Page
+
+![User-Flow-Diagram](Screenshots/Status-Pages.png)
+
+##### Admin Portal
+
+![User-Flow-Diagram](Screenshots/Admin-Portal.png)
 
 
- Full architecture diagram and all other diagrams are included in the folder `/Diagrams`
+---
+
+
 
 ---
 
