@@ -279,6 +279,7 @@ Database-driven
 AI-ready (future upgrade)
 
 ---
+```
 
 ##  Repository Structure
 
@@ -317,7 +318,6 @@ CivicEye/
 └── README_Round2_Plan.md
 ```
 ---
-
 ##  Installation & Setup (Prototype)
 
 ### 1️ Install Dependencies
