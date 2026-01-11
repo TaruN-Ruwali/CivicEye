@@ -86,7 +86,7 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 
 ##  Tech Stack
 ```
-1️Frontend (User Interface)
+Frontend (User Interface)
 
 Purpose:
 This is what users and admins see in the browser.
@@ -107,8 +107,7 @@ Colors, spacing, alignment
 
 Makes pages look clean
 
-**JavaScript
-**
+**JavaScript **
 Handles button clicks
 
 Sends data to backend (complaints, login, status)
@@ -182,16 +181,13 @@ JSON
 Data format for communication
 
 Easy to send and read
-**
-Database
-**
+** Database **
 Purpose:
 Stores all project data.
 
 Technology used:
-**
-SQLite
-**
+
+**SQLite**
 File-based database
 
 No server needed
@@ -216,8 +212,8 @@ Perfect for college projects
 
 Easy to migrate later to MySQL/PostgreSQL
 
-**AI / Validation Logic (Current Status)
-**
+**AI / Validation Logic (Current Status) **
+
 Purpose:
 Check complaint validity.
 
@@ -237,8 +233,7 @@ Image-based pothole or garbage detection
 
 Python ML integration possible
 
-**Image Handling
-**
+**Image Handling **
 Purpose:
 Handle uploaded complaint images.
 
@@ -266,8 +261,7 @@ Browser
 
 Chrome / Edge for testing
 
-**Project Type Summary
-**
+**Project Type Summary **
 Web Application
 
 Client–Server architecture
