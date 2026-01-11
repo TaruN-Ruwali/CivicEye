@@ -276,6 +276,8 @@ pip install flask flask-cors
 frontend/index.html  → Citizen Login
 
 frontend/admin.html  → Admin Dashboard
+Admin id - Adminipadchor@civiceye.com
+Admin Pass - Admin@123
 ```
 
 ---
