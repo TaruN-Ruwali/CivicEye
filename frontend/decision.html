@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicEye – AI Decision</title>
+  <link rel="stylesheet" href="./css/decision.css" />
+</head>
+<body>
+  <div class="decision-container">
+    <nav class="dash-nav">
+      <img src="./assets/AI DECISION.png" alt="CivicEye AI Decision" style="height: 120px; object-fit: contain;" />
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </nav>
+
+    <section class="decision-body">
+      <div id="decision-header" class="decision-header">
+        <div class="decision-meta">
+          <span id="complaint-id" class="meta-item"></span>
+          <span id="timestamp" class="meta-item"></span>
+        </div>
+      </div>
+
+      <div class="decision-grid">
+        <div class="image-panel">
+          <img id="image-preview" src="./assets/AI DECISION.png" alt="Image preview" />
+        </div>
+
+        <div class="details-panel">
+          <div class="detail-row">
+            <label>Address</label>
+            <div id="address" class="detail-value">—</div>
+          </div>
+          <div class="detail-row">
+            <label>Description</label>
+            <div id="description" class="detail-value">—</div>
+          </div>
+          <div class="detail-row">
+            <label>AI Detected Type</label>
+            <div id="detected-type" class="badge badge-unknown">Unknown</div>
+          </div>
+          <div class="detail-row">
+            <label>Confidence</label>
+            <div id="confidence" class="detail-value">0%</div>
+          </div>
+          <div class="detail-row">
+            <label>AI Status</label>
+            <div id="ai-status" class="badge badge-pending">Pending</div>
+          </div>
+          <div class="detail-row">
+            <label>Detected Object</label>
+            <div id="detected-label" class="detail-value">—</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="detector-results" id="detector-results" style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 8px; display: none;">
+        <h3 style="margin-top: 0;">All Detector Results</h3>
+        <div id="detector-details"></div>
+      </div>
+
+      <div class="decision-actions">
+        <div class="override-row">
+          <label for="override-type">Override Type</label>
+          <select id="override-type">
+            <option value="">No override</option>
+            <option value="garbage">Garbage</option>
+            <option value="pothole">Pothole</option>
+            <option value="water_leakage">Water Leakage</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="buttons-row">
+          <button class="btn approve" onclick="submitDecision('verified')">Approve</button>
+          <button class="btn reject" onclick="submitDecision('rejected')">Reject</button>
+          <button class="btn pending" onclick="submitDecision('pending')">Mark Pending</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./js/decision.js"></script>
+</body>
+</html>
