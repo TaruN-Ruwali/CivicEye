@@ -1,91 +1,166 @@
-#  CivicEye – Round-2 Upgrade Strategy
+#  CivicEye – Round-2 Development Plan
 
-This document describes how CivicEye will evolve in Round-2 of Hack The Winter to move from a working prototype into a smarter and more scalable civic complaint platform.
-
----
-
-##  Round-2 Objective
-Strengthen the backend, introduce real AI-based validation, add analytics, and improve system automation while keeping scope realistic and achievable.
+**CivicEye** is a civic issue reporting platform that allows citizens to upload photos of infrastructure problems (like potholes and leaks) and track their status. The Round-1 prototype demonstrated a working frontend (HTML, CSS, JS) and a basic admin panel. In Round-2, our focus is on improving the **technical foundation**, adding **real data processing**, and moving from prototype logic toward a **more complete system design** that still stays within our development capacity.
 
 ---
 
-##  What Will Be Added in Round-2
+##  What We Have Today
 
-| Area | Upgrade |
-|------|---------|
-| AI Detection | Integrate a real ML model to classify images (pothole / garbage / leakage) instead of simulation |
-| Data Accuracy | Add minimum-confidence cutoff so invalid uploads are rejected |
-| Location Intelligence | Auto-capture geo-coordinates (browser-based) |
-| Multi-Department Routing | Complaints auto-assigned to PWD / Jal Nigam / Nagar Palika based on category |
-| Admin Tools | Add analytics charts (pending vs resolved, heat-map if time allows) |
-| Security | Basic authentication using token / session-cookie |
-| Storage | Move from simple JSON/SQLite to SQLite with structured schema and image storage folder |
+In Round-1 we built:
 
----
+ User login and registration pages (`index.html`, `register.html`)  
+ Complaint submission page with image upload (`submit.html`)  
+ Status tracking page showing complaint list (`status.html`)  
+ Admin panel to view and update complaints (`admin.html`)  
+ Basic routing based on user role  
+ Static frontend pages connected with basic JS logic  
+ A clear folder structure
 
-##  Upgraded Technical Design (Round-2 Vision)
+These files and interactions form the current prototype:
+
 ```
-Citizen Browser → Web Frontend → Flask Backend
-↓ ↓
-Upload Image Submit Details
-↓
-AI Classification Model (MobileNet-V2 / YOLO-nano)
-↓
-Category + Confidence Score
-↓
-SQLite Database → Admin Dashboard → Status View
+CivicEye/
+│
+|── Diagrams/
+│ ├── Admin-Complaint-Management-Flow.png
+│ ├── System-Architecture.png
+│ ├── User-Flow-Diagram.png
+|
+├── Screenshots/
+│ ├── Admin-Portal.png
+│ ├── Complain-Page.png
+│ ├── Login-Page.png
+│ ├── Register-Page.png
+│ └── Status-Pages.png
+|
+├── backend/
+│ ├── ai_engine.py
+│ ├── app.py
+│ ├── model.py
+│ ├── requirements.txt
+│ ├── server.py
+│ └── utils.py
+│
+├── database/
+| |── CivicEye_Database_schema.md
+│ ├── ER Diagram.png
+│ ├── civic_eye.db
+│ └── schema.sql
+|
+├── .gitignore
+├── README.md
+├── README_Flow.md
+└── README_Round2_Plan.md
 ```
 
----
-
-
-
-
-##  AI Model Plan
-| Component | Description |
-|----------|-------------|
-| Dataset | Small custom dataset (~300–600 images) + augmentations |
-| Model | Lightweight classifier (MobileNet-V2 or YOLO-nano) |
-| Inference | Python + OpenCV + TensorFlow Lite |
-| Output | `{type: pothole/garbage/water, confidence: %, valid: true/false}` |
 
 ---
 
-##  Backend Enhancements
-| Planned Functionality | Notes |
-|----------------------|--------|
-| Routing Engine | Auto-assign to department using rule-based logic |
-| Rate-limit / validation | Prevent spam & duplicate submissions |
-| DB Schema | Table structure for complaints, users, departments |
+##  Round-2 Focus Areas
+
+For this round, we are targeting improvements in the following areas:
+
+###  1. Real Image Validation Logic
+- Replace the current **simulation placeholder** with a simple trained model.
+- We will use a small dataset and a lightweight model (like MobileNetv2) to distinguish:
+  - Valid complaints (e.g., potholes, trash, leaks)
+  - Invalid or unrelated images
+- This model will run server-side in Python, returning:
+```{ "label": "pothole", "confidence": 0.78 }```
 
 ---
 
-## Admin Dashboard – Round-2 Enhancements
-| Feature | Description |
-|---------|-------------|
-| Complaint analytics | Pie chart: Pending / In-Progress / Resolved |
-| Filter & search | By location or category |
-| Auto-refresh | Dashboard shows latest complaints without reload |
-| Department panel | Optional – per-team view |
+###  2. Backend Improvements
+
+We will continue building in **Flask** with a clearer API design:
+
+| API | Purpose |
+|-----|----------|
+| `POST /api/auth/login` | Authenticate user |
+| `POST /api/auth/register` | Register new user |
+| `POST /api/complaints` | Accept complaint + image |
+| `GET /api/complaints/user` | List complaints for a user |
+| `GET /api/complaints/all` | Admin list of all complaints |
+| `PUT /api/complaints/:id` | Admin update status |
+
+These will be implemented in `backend/server.py` and helper modules.
 
 ---
 
-##  Team Work Allocation
-| Member | Role |
-|--------|------|
-| Tarun | Frontend improvements + map/location + admin dashboard charts |
-| Jay | AI dataset preparation + model training + inference code |
-| Ankush | Backend Flask APIs, DB schema, routing logic |
-| Ujjwal | UI polishing, forms validation, documentation, demo prep |
+##  Technical Enhancements (Depth & Scalability)
+
+Although this is still a prototype, we will:
+
+### Backend
+- Improve backend file structure (`/backend/routes.py`, `/backend/models.py`, etc.)
+- Add **error handling** for:
+- invalid uploads
+- missing fields
+- unexpected input
+
+### Database
+- Enhance **SQLite schema** to support:
+- user table
+- complaint table with status history
+- location (latitude, longitude)
+- timestamps (created_at, updated_at)
+
+Example SQL schema:
+```sql
+CREATE TABLE users (
+id INTEGER PRIMARY KEY,
+name TEXT,
+email TEXT UNIQUE,
+password TEXT
+);
+
+CREATE TABLE complaints (
+id INTEGER PRIMARY KEY,
+user_id INTEGER,
+image_path TEXT,
+description TEXT,
+status TEXT,
+latitude REAL,
+longitude REAL,
+created_at TEXT,
+updated_at TEXT
+);
+```
+---
+
+### System Architecture
+![System Architecture](Diagrams/System-Architecture.png)
 
 ---
 
-##  Deliverables Expected in Round-2
-✔ AI classification implemented  
-✔ Admin analytics dashboard  
-✔ Location auto-capture & stored in DB  
-✔ Department routing logic  
-✔ Improved security + basic token/session  
-✔ Updated README + diagrams + live demo video  
+### Admin Complaint Management Flow
+![Flow-Chart](Diagrams/Admin-Complaint-Management-Flow.png)
+
+---
+
+### User Flow Diagram
+![User-Flow-Diagram](Diagrams/User-Flow-Diagram.png)
+
+---
+
+### Screenshot
+##### Login Page
+![User-Flow-Diagram](Screenshots/Login-Page.png)
+
+##### Register Page
+
+![User-Flow-Diagram](Screenshots/Register-Page.png)
+
+##### Complain Page
+
+![User-Flow-Diagram](Screenshots/Complain-Page.png)
+
+##### Status Page
+
+![User-Flow-Diagram](Screenshots/Status-Pages.png)
+
+##### Admin Portal
+
+![User-Flow-Diagram](Screenshots/Admin-Portal.png)
 
 ---
