@@ -7,7 +7,7 @@ This prototype demonstrates:
  Citizen portal (Submit complaints + View status)  
  Admin portal (Manage complaints + Update resolution stage)  
  Data persistence using SQLite  
- Simulated AI validation pipeline (Round-2 upgrade planned)
+ Simulated AI validation pipeline 
 
 ---
 
