@@ -1,120 +1,168 @@
-# CivicEye – Database Schema
+CivicEye – Database Schema
 
-This document describes the database design for **CivicEye**, a smart city platform that enables citizens to report infrastructure defects like potholes and cracks. The system connects citizens directly with Public Works Department authorities for efficient issue resolution.
+This document describes the database design for CivicEye, a smart city platform that enables citizens to report infrastructure issues such as potholes, garbage, and water leakage. The system integrates AI-based detection and admin verification to ensure efficient and transparent issue resolution.
 
----
+1. Overview
 
-## 1. Overview
+The database supports:
 
-The database stores:
-- User accounts and authentication data
-- Infrastructure complaint reports with images and locations
-- Complaint status tracking and updates
-- Role-based access for users and administrators
+User authentication and role-based access
 
-A **relational database** is used for data integrity, consistency, and efficient querying of complaint data.
+Complaint submission with images and locations
 
----
+AI-based analysis of complaints
 
-## 2. Tables
+Admin and AI decision tracking
 
-### 2.1 Users Table
+Full audit trail of AI detections
 
-Stores user account information including authentication details and roles.
+A relational SQLite database is used to ensure data integrity, consistency, and scalability.
 
-| Field Name      | Data Type     | Constraints                  | Description |
-|-----------------|---------------|------------------------------|-------------|
-| id              | INTEGER (PK)  | AUTOINCREMENT              | Unique user ID |
-| name            | TEXT          |                              | User's display name (optional) |
-| email           | TEXT          | UNIQUE, NOT NULL            | User's email address (login) |
-| password_hash   | TEXT          | NOT NULL                   | Hashed password for authentication |
-| role            | TEXT          | CHECK(role IN ('admin', 'user')), DEFAULT 'user' | User role for access control (admin or user) |
-| created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP  | Account creation timestamp |
+2. Tables
+2.1 Users Table
 
-The Users table manages all registered users of the system. Each user has a unique email that serves as their login credential. The role field determines what actions a user can perform within the system - regular users can submit complaints while admins can manage all complaints.
+Stores all registered users and administrators.
 
-### 2.2 Complaints Table
+Field Name	Data Type	Constraints	Description
+id	INTEGER (PK)	AUTOINCREMENT	Unique user ID
+name	TEXT	—	User name
+email	TEXT	UNIQUE, NOT NULL	Login email
+password_hash	TEXT	NOT NULL	Hashed password
+role	TEXT	CHECK('admin','user'), DEFAULT 'user'	Access role
+created_at	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP	Account creation time
 
-Stores all infrastructure complaint reports submitted by users.
+Purpose:
+Controls authentication and permissions. Admins can verify or reject complaints; users can submit complaints.
 
-| Field Name      | Data Type     | Constraints                  | Description |
-|-----------------|---------------|------------------------------|-------------|
-| id              | INTEGER (PK)  | AUTOINCREMENT              | Unique complaint ID |
-| user_id         | INTEGER (FK)  | NOT NULL, FOREIGN KEY(users.id) | ID of the user who submitted the complaint |
-| image_path      | TEXT          |                              | Path to uploaded image (optional) |
-| description     | TEXT          |                              | Complaint description (optional) |
-| category        | TEXT          | CHECK(category IN ('pothole', 'garbage', 'water_leakage', 'other')), DEFAULT 'other' | Category of the complaint |
-| status          | TEXT          | CHECK(status IN ('pending', 'in_progress', 'resolved')), NOT NULL, DEFAULT 'pending' | Current complaint status |
-| location        | TEXT          |                              | Location provided by user |
-| created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP  | Complaint submission timestamp |
-| updated_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP  | Last status update timestamp |
+2.2 Complaints Table
 
-The Complaints table is the core of the system, storing all infrastructure issues reported by citizens. Each complaint is linked to a user via the user_id foreign key. The table includes fields for optional image uploads, descriptions, and location data to help authorities identify and address the reported issues. The status field tracks the progress of each complaint from submission to resolution.
+Stores all complaints submitted by users along with AI and admin decisions.
 
----
+Core Complaint Fields
+Field Name	Data Type	Description
+id	INTEGER (PK)	Complaint ID
+user_id	INTEGER (FK)	User who submitted the complaint
+complaint_type	TEXT	User-provided complaint type
+image_path	TEXT	Uploaded image path
+address	TEXT	Physical address
+description	TEXT	Complaint description
+created_at	TIMESTAMP	Submission time
+updated_at	TIMESTAMP	Last update time
+Complaint Status Tracking
+Field Name	Description
+status	Overall complaint state (pending, verified, rejected, resolved)
+AI Decision (Latest Result)
 
-## 2.3 Category Values (Controlled)
+These fields store only the most recent AI/Admin decision.
 
-- pothole  
-- garbage  
-- water_leakage  
-- other  
+Field Name	Description
+ai_result	Raw AI output (text/JSON)
+ai_detected_type	AI-predicted category
+ai_confidence	Confidence score (0–1)
+ai_status	AI decision (pending, verified, rejected)
+decision_source	AI or Admin
+decision_timestamp	Decision time
+ai_model_name	AI model used
+Legacy / Compatibility Fields
+Field Name	Description
+category	Old category system
+location	Old location field
+ai_detected	Boolean AI flag
+ai_label	Old AI label
 
-Categories are used to classify different types of infrastructure issues for better organization and tracking. The system enforces these specific categories to maintain consistency in how complaints are categorized.
+These fields exist to support older system logic and can be removed later.
 
----
+2.3 AI Detections Table (Audit Log)
 
-## 2.4 Status Values (Controlled)
+Stores every AI detection attempt, not just the latest one.
 
-- pending      (Complaint submitted, awaiting review)
-- in_progress  (Work has started on the issue)
-- resolved     (Issue has been fixed)
+Field Name	Data Type	Description
+id	INTEGER (PK)	Detection ID
+complaint_id	INTEGER (FK)	Related complaint
+detected_type	TEXT	Predicted type
+confidence	REAL	Confidence score
+model_name	TEXT	AI model name
+created_at	TIMESTAMP	Detection time
 
-The status values provide a clear workflow for managing complaints. When a complaint is first submitted, it enters the 'pending' state. As work begins on addressing the issue, it moves to 'in_progress', and finally to 'resolved' when the problem has been fixed.
+Purpose:
 
----
+AI decision history
 
-## 2.5 Indexes
+Multi-model comparison
 
-- idx_complaints_user_id: Index on user_id for efficient user complaint queries
-- idx_complaints_status: Index on status for efficient status-based queries
-- idx_complaints_created_at: Index on created_at for efficient time-based queries
+Transparency and debugging
 
-Database indexes are implemented to optimize common query patterns. The user_id index allows for quick retrieval of all complaints by a specific user. The status index enables efficient filtering of complaints by their current status. The created_at index supports chronological ordering and time-based filtering of complaints.
+Future model training
 
----
+3. Controlled Values
+Complaint Categories
 
-## 3. Relationships
+pothole
 
-The database implements a one-to-many relationship between Users and Complaints. Each user can submit multiple complaints, but each complaint is associated with exactly one user. The foreign key constraint ensures referential integrity - if a user account is deleted, all associated complaints are also removed from the system.
+garbage
 
----
+water_leakage
 
-## 4. Data Integrity
+other
 
-The database schema includes several constraints to maintain data quality:
+Complaint Status
 
-- UNIQUE constraint on user email addresses to prevent duplicate accounts
-- NOT NULL constraints on required fields to ensure essential information is always captured
-- CHECK constraints on category and status fields to enforce valid values
-- FOREIGN KEY constraint to maintain referential integrity between users and complaints
-- CASCADE delete rule to automatically remove related complaints when a user is deleted
+pending
 
----
+verified
 
-## 5. Security Considerations
+rejected
 
-- Passwords are stored as hashed values, not in plain text
-- User roles control access to different system functions
-- Email addresses serve as unique identifiers for user accounts
-- Timestamps track when records are created and modified
+resolved
 
----
+AI Status
 
-## 6. Performance Considerations
+pending
 
-- Indexes on frequently queried columns improve query performance
-- Proper normalization reduces data redundancy
-- Timestamps enable efficient time-based queries and reporting
-- Foreign key constraints maintain data consistency
+verified
 
+rejected
+
+4. Relationships
+
+One user → many complaints
+
+One complaint → many AI detections
+
+Deleting a user deletes all complaints
+
+Deleting a complaint deletes all AI detections
+
+All enforced using FOREIGN KEY with CASCADE DELETE.
+
+5. Data Integrity
+
+UNIQUE email enforcement
+
+CHECK constraints on roles, categories, and status
+
+FOREIGN KEY constraints for consistency
+
+Automatic timestamping
+
+Cascading deletes to prevent orphan data
+
+6. Security Considerations
+
+Passwords stored as hashes
+
+Role-based access control
+
+Decision source tracking (AI vs Admin)
+
+Immutable AI audit history
+
+7. Performance Considerations
+
+Indexed foreign keys
+
+Indexed status and timestamps
+
+Normalized structure
+
+Lightweight SQLite design suitable for Flask/Django
