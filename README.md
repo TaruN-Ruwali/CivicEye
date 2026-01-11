@@ -14,17 +14,13 @@ This prototype demonstrates:
 ##  Problem Statement
 Even though our cities are becoming "Smart," the way we report and fix basic issues like potholes or garbage is still stuck in the past. There is a huge gap between what citizens see on the road and what authorities actually know.
 
-- It’s too hard to report an issue 
-Most people see a problem (like a broken pipe or a pile of trash) and want to help, but they don't know where to go. Traditional helplines are confusing and visiting government offices is a waste of time. Because the process is so difficult, most issues never get reported.
+- Most people see a problem (like a broken pipe or a pile of trash) and want to help, but they don't know where to go. Traditional helplines are confusing and visiting government offices is a waste of time. Because the process is so difficult, most issues never get reported.
 
-- We are left in the dark 
-Even if someone manages to file a complaint, they have no idea what’s happening with it. There is no way to track if someone is working on it or if it has been ignored. This lack of transparency makes citizens lose trust in the system.
+- Even if someone manages to file a complaint, they have no idea what’s happening with it. There is no way to track if someone is working on it or if it has been ignored. This lack of transparency makes citizens lose trust in the system.
 
-- Authorities are overwhelmed 
-On the other side, municipal offices are buried under paperwork. Without a proper digital dashboard, they can’t tell which issue is urgent and which one is a duplicate. This leads to a mess where resources are wasted on the wrong things.
+- On the other side, municipal offices are buried under paperwork. Without a proper digital dashboard, they can’t tell which issue is urgent and which one is a duplicate. This leads to a mess where resources are wasted on the wrong things.
 
-- Small problems become big disasters 
-Because the information moves so slowly from a citizen to the actual repair team, a small pothole often turns into a massive crater by the time someone arrives to fix it. This delay doesn't just cost more money; it leads to accidents and puts lives at risk.
+- Because the information moves so slowly from a citizen to the actual repair team, a small pothole often turns into a massive crater by the time someone arrives to fix it. This delay doesn't just cost more money; it leads to accidents and puts lives at risk.
 
 Our Solution: CivicEye
 We built CivicEye to bridge this gap. We wanted to make reporting a civic issue as easy as posting a photo on social media. By connecting citizens directly to an admin dashboard, we make sure that every complaint is seen, tracked, and fixed—fast.
@@ -167,17 +163,13 @@ frontend/admin.html  → Admin Dashboard
 
 CivicEye is more than just an app or a website. It’s about making our cities feel like home again. Here’s how it actually changes things for a common man:
 
-- No more waiting for weeks
-We’ve all seen that one pothole that stays there for months until someone gets hurt. CivicEye changes that. Instead of waiting for a miracle, a citizen reports it, and it reaches the right officer instantly. Faster fixes mean safer roads for our families.
+- We’ve all seen that one pothole that stays there for months until someone gets hurt. CivicEye changes that. Instead of waiting for a miracle, a citizen reports it, and it reaches the right officer instantly. Faster fixes mean safer roads for our families.
 
-- No more "Black Holes"
-Usually, when we complain, we feel like our voice is lost. We never know if anyone even read it. With CivicEye, you can see the progress of your complaint on your screen. When people see things getting fixed, they start trusting the system again.
+- Usually, when we complain, we feel like our voice is lost. We never know if anyone even read it. With CivicEye, you can see the progress of your complaint on your screen. When people see things getting fixed, they start trusting the system again.
 
-- Helping the Government work smarter
-Sometimes, authorities want to work but they don't know where to start. Our dashboard shows them a "map of problems." For example, if 20 people report a leak in the same area, the government knows there is a big pipe issue. This helps them spend our tax money on the right things.
+- Sometimes, authorities want to work but they don't know where to start. Our dashboard shows them a "map of problems." For example, if 20 people report a leak in the same area, the government knows there is a big pipe issue. This helps them spend our tax money on the right things.
 
-- Letting AI do the "Boring" Work
-Authorities get thousands of fake or repeated photos every day. Our AI filters out the "spam" and "fake" complaints automatically. This means the ground workers don't waste time on paperwork and can focus 100% on actually fixing the problems.
+- Authorities get thousands of fake or repeated photos every day. Our AI filters out the "spam" and "fake" complaints automatically. This means the ground workers don't waste time on paperwork and can focus 100% on actually fixing the problems.
 
 # The Big Idea
 "CivicEye turns your smartphone into a tool for change. It makes looking after our city a teamwork between the people and the government, rather than just a struggle."
