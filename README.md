@@ -85,20 +85,21 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 ---
 
 ##  Tech Stack
-1️⃣ Frontend (User Interface)
+```
+1️Frontend (User Interface)
 
 Purpose:
 This is what users and admins see in the browser.
 
 Technologies used:
 
-HTML
+**HTML**
 
 Creates page structure
 
 Forms, buttons, input fields, tables
 
-CSS
+**CSS**
 
 Page design and layout
 
@@ -106,8 +107,8 @@ Colors, spacing, alignment
 
 Makes pages look clean
 
-JavaScript
-
+**JavaScript
+**
 Handles button clicks
 
 Sends data to backend (complaints, login, status)
@@ -126,7 +127,7 @@ Admin dashboard
 
 Showing complaint status
 
-2️⃣ Backend (Server Side Logic)
+**Backend (Server Side Logic)**
 
 Purpose:
 Handles requests, processes data, talks to database.
@@ -159,7 +160,7 @@ Send complaint status to frontend
 
 Update status by admin
 
-3️⃣ API Layer (Communication)
+API Layer (Communication)
 
 Purpose:
 Connects frontend and backend.
@@ -181,16 +182,16 @@ JSON
 Data format for communication
 
 Easy to send and read
-
-4️⃣ Database
-
+**
+Database
+**
 Purpose:
 Stores all project data.
 
 Technology used:
-
+**
 SQLite
-
+**
 File-based database
 
 No server needed
@@ -215,8 +216,8 @@ Perfect for college projects
 
 Easy to migrate later to MySQL/PostgreSQL
 
-5️⃣ AI / Validation Logic (Current Status)
-
+**AI / Validation Logic (Current Status)
+**
 Purpose:
 Check complaint validity.
 
@@ -236,8 +237,8 @@ Image-based pothole or garbage detection
 
 Python ML integration possible
 
-6️⃣ Image Handling
-
+**Image Handling
+**
 Purpose:
 Handle uploaded complaint images.
 
@@ -249,7 +250,7 @@ Flask handles image upload
 
 Stored locally in project folders
 
-7️⃣ Development & Tools
+**Development & Tools**
 
 Git & GitHub
 
@@ -265,8 +266,8 @@ Browser
 
 Chrome / Edge for testing
 
-8️⃣ Project Type Summary
-
+**Project Type Summary
+**
 Web Application
 
 Client–Server architecture
@@ -280,6 +281,7 @@ AI-ready (future upgrade)
 ---
 
 ##  Repository Structure
+
 ```
 CivicEye/
 │
