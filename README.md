@@ -31,7 +31,7 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 
 ---
 
-##  Core Features (Prototype – Round-1)
+##  Core Features
 | Feature | Citizen Web | Admin Panel |
 |--------|-------------|-------------|
 | Login / Register | ✅ |  Private |
