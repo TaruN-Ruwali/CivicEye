@@ -4,10 +4,10 @@ CivicEye is a web-based civic infrastructure reporting system that empowers citi
 
 This prototype demonstrates:
 
-✔ Citizen portal (Submit complaints + View status)  
-✔ Admin portal (Manage complaints + Update resolution stage)  
-✔ Data persistence using SQLite  
-✔ Simulated AI validation pipeline (Round-2 upgrade planned)
+ Citizen portal (Submit complaints + View status)  
+ Admin portal (Manage complaints + Update resolution stage)  
+ Data persistence using SQLite  
+ Simulated AI validation pipeline (Round-2 upgrade planned)
 
 ---
 
@@ -49,7 +49,7 @@ CivicEye bridges this gap by digitally connecting **citizens ↔ municipalities*
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 ```
 CivicEye/
 │
@@ -88,15 +88,15 @@ CivicEye/
 
 ##  Installation & Setup (Prototype)
 
-### 1️⃣ Install Dependencies
+### 1️ Install Dependencies
 ```bash
 pip install flask flask-cors
 ```
-### 2️⃣ Run Server
+### 2️ Run Server
 ```bash
 python backend/server.py
 ```
-### 3️⃣ Open HTML files
+### 3️ Open HTML files
 ```bash
 frontend/index.html  → Citizen Login
 
@@ -118,13 +118,13 @@ frontend/admin.html  → Admin Dashboard
 
 ##  Why CivicEye is Impactful
 
-✔️ Reduces complaint delay → faster civic repairs
+ Reduces complaint delay → faster civic repairs
 
-✔️ Improves transparency between public & government
+ Improves transparency between public & government
 
-✔️ Gives real-time actionable dashboard to authorities
+ Gives real-time actionable dashboard to authorities
 
-✔️ AI keeps false complaints out → higher efficiency
+ AI keeps false complaints out → higher efficiency
 
 ---
 ##  Thank you for reviewing — full working demo + Web App + real AI model will be presented in Stage-2 .
