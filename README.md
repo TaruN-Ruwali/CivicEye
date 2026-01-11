@@ -85,10 +85,197 @@ We built CivicEye to bridge this gap. We wanted to make reporting a civic issue 
 ---
 
 ##  Tech Stack
-**Frontend** – HTML, CSS, JavaScript  
-**Backend** – Python Flask REST API  
-**Database** – SQLite  
-**AI Layer** – Placeholder simulation (to be replaced with ML model in Round-2)  
+1️⃣ Frontend (User Interface)
+
+Purpose:
+This is what users and admins see in the browser.
+
+Technologies used:
+
+HTML
+
+Creates page structure
+
+Forms, buttons, input fields, tables
+
+CSS
+
+Page design and layout
+
+Colors, spacing, alignment
+
+Makes pages look clean
+
+JavaScript
+
+Handles button clicks
+
+Sends data to backend (complaints, login, status)
+
+Fetches data from backend using fetch()
+
+Updates page without reload
+
+Used for:
+
+Citizen login & register
+
+Complaint submission form
+
+Admin dashboard
+
+Showing complaint status
+
+2️⃣ Backend (Server Side Logic)
+
+Purpose:
+Handles requests, processes data, talks to database.
+
+Technology used:
+
+Python
+
+Main programming language
+
+Easy to read and maintain
+
+Flask (Python Framework)
+
+Lightweight web framework
+
+Creates API routes (URLs)
+
+Connects frontend and database
+
+Backend responsibilities:
+
+Accept login & register requests
+
+Receive complaint data
+
+Store data in database
+
+Send complaint status to frontend
+
+Update status by admin
+
+3️⃣ API Layer (Communication)
+
+Purpose:
+Connects frontend and backend.
+
+Technology used:
+
+REST API (via Flask)
+
+Uses HTTP methods:
+
+GET → fetch data
+
+POST → send data
+
+PUT → update status
+
+JSON
+
+Data format for communication
+
+Easy to send and read
+
+4️⃣ Database
+
+Purpose:
+Stores all project data.
+
+Technology used:
+
+SQLite
+
+File-based database
+
+No server needed
+
+Stored as .db file
+
+Stores:
+
+User details (citizens, admins)
+
+Complaints
+
+Complaint status
+
+Image path / metadata
+
+Why SQLite:
+
+Simple
+
+Perfect for college projects
+
+Easy to migrate later to MySQL/PostgreSQL
+
+5️⃣ AI / Validation Logic (Current Status)
+
+Purpose:
+Check complaint validity.
+
+Current implementation:
+
+Simulated AI score
+
+No real machine learning model
+
+Just logic-based or random scoring
+
+Future scope:
+
+Can add YOLO / CNN
+
+Image-based pothole or garbage detection
+
+Python ML integration possible
+
+6️⃣ Image Handling
+
+Purpose:
+Handle uploaded complaint images.
+
+Technology used:
+
+HTML file input
+
+Flask handles image upload
+
+Stored locally in project folders
+
+7️⃣ Development & Tools
+
+Git & GitHub
+
+Version control
+
+Code sharing
+
+VS Code
+
+Code editor
+
+Browser
+
+Chrome / Edge for testing
+
+8️⃣ Project Type Summary
+
+Web Application
+
+Client–Server architecture
+
+Frontend + Backend separated
+
+Database-driven
+
+AI-ready (future upgrade)
 
 ---
 
